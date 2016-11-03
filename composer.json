@@ -24,11 +24,5 @@
     },
     "require": {
         "omnipay/common": "~2.0"
-    },
-    "repositories": {
-        "packagist": {
-            "type": "composer",
-            "url": "https://packagist.phpcomposer.com"
-        }
     }
 }
