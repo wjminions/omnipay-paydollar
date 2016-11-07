@@ -1,13 +1,13 @@
 <?php
 
-namespace Omnipay\UnionPay\Message;
+namespace Omnipay\Wjminions\Message;
 
 use Omnipay\Common\Message\ResponseInterface;
-use Omnipay\UnionPay\Helper;
+use Omnipay\Wjminions\Helper;
 
 /**
  * Class ExpressFileTransferRequest
- * @package Omnipay\UnionPay\Message
+ * @package Omnipay\Wjminions\Message
  */
 class ExpressFileTransferRequest extends AbstractExpressRequest
 {

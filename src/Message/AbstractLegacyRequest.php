@@ -1,12 +1,12 @@
 <?php
 
-namespace Omnipay\UnionPay\Message;
+namespace Omnipay\Wjminions\Message;
 
 use Omnipay\Common\Message\AbstractRequest;
 
 /**
  * Class AbstractLegacyRequest
- * @package Omnipay\UnionPay\Message
+ * @package Omnipay\Wjminions\Message
  */
 abstract class AbstractLegacyRequest extends AbstractRequest
 {

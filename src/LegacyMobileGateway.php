@@ -1,10 +1,10 @@
 <?php
 
-namespace Omnipay\UnionPay;
+namespace Omnipay\Wjminions;
 
 /**
  * Class LegacyMobileGateway
- * @package Omnipay\UnionPay
+ * @package Omnipay\Wjminions
  */
 class LegacyMobileGateway extends AbstractLegacyGateway
 {
@@ -16,18 +16,18 @@ class LegacyMobileGateway extends AbstractLegacyGateway
      */
     public function getName()
     {
-        return 'UnionPay_LegacyMobile';
+        return 'Wjminions_LegacyMobile';
     }
 
 
     public function purchase(array $parameters = array ())
     {
-        return $this->createRequest('\Omnipay\UnionPay\Message\LegacyMobilePurchaseRequest', $parameters);
+        return $this->createRequest('\Omnipay\Wjminions\Message\LegacyMobilePurchaseRequest', $parameters);
     }
 
 
     public function completePurchase(array $parameters = array ())
     {
-        return $this->createRequest('\Omnipay\UnionPay\Message\LegacyCompletePurchaseRequest', $parameters);
+        return $this->createRequest('\Omnipay\Wjminions\Message\LegacyCompletePurchaseRequest', $parameters);
     }
 }

@@ -1,9 +1,9 @@
 <?php
-namespace Omnipay\UnionPay;
+namespace Omnipay\Wjminions;
 
 /**
  * Class Helper
- * @package Omnipay\UnionPay
+ * @package Omnipay\Wjminions
  */
 class Helper
 {

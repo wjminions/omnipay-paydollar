@@ -1,12 +1,12 @@
 <?php
 
-namespace Omnipay\UnionPay\Message;
+namespace Omnipay\Wjminions\Message;
 
 use Omnipay\Common\Message\AbstractResponse;
 
 /**
  * Class ExpressCompletePurchaseResponse
- * @package Omnipay\UnionPay\Message
+ * @package Omnipay\Wjminions\Message
  */
 class ExpressCompletePurchaseResponse extends AbstractResponse
 {

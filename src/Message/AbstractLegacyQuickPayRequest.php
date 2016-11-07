@@ -1,10 +1,10 @@
 <?php
 
-namespace Omnipay\UnionPay\Message;
+namespace Omnipay\Wjminions\Message;
 
 /**
  * Class AbstractLegacyQuickPayRequest
- * @package Omnipay\UnionPay\Message
+ * @package Omnipay\Wjminions\Message
  */
 abstract class AbstractLegacyQuickPayRequest extends AbstractLegacyRequest
 {
@@ -21,9 +21,9 @@ abstract class AbstractLegacyQuickPayRequest extends AbstractLegacyRequest
             'query' => 'https://www.epay.lxdns.com/UpopWeb/api/Query.action',
         ),
         'production' => array(
-            'front' => 'https://unionpaysecure.com/api/Pay.action',
-            'back'  => 'https://besvr.unionpaysecure.com/api/BSPay.action',
-            'query' => 'https://query.unionpaysecure.com/api/Query.action',
+            'front' => 'https://Wjminionssecure.com/api/Pay.action',
+            'back'  => 'https://besvr.Wjminionssecure.com/api/BSPay.action',
+            'query' => 'https://query.Wjminionssecure.com/api/Query.action',
         ),
     );
 }

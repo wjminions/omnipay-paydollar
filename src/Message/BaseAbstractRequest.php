@@ -1,9 +1,9 @@
 <?php
 
-namespace Omnipay\UnionPay\Message;
+namespace Omnipay\Wjminions\Message;
 
 use Omnipay\Common\Message\AbstractRequest;
-use Omnipay\UnionPay\Helper;
+use Omnipay\Wjminions\Helper;
 
 abstract class BaseAbstractRequest extends AbstractRequest
 {

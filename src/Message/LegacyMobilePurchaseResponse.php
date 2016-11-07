@@ -1,13 +1,13 @@
 <?php
 
-namespace Omnipay\UnionPay\Message;
+namespace Omnipay\Wjminions\Message;
 
 use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Common\Message\ResponseInterface;
 
 /**
  * Class LegacyMobilePurchaseResponse
- * @package Omnipay\UnionPay\Message
+ * @package Omnipay\Wjminions\Message
  */
 class LegacyMobilePurchaseResponse extends AbstractResponse implements ResponseInterface
 {

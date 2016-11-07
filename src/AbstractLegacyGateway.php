@@ -1,12 +1,12 @@
 <?php
 
-namespace Omnipay\UnionPay;
+namespace Omnipay\Wjminions;
 
 use Omnipay\Common\AbstractGateway;
 
 /**
  * Class AbstractLegacyGateway
- * @package Omnipay\UnionPay
+ * @package Omnipay\Wjminions
  */
 abstract class AbstractLegacyGateway extends AbstractGateway
 {

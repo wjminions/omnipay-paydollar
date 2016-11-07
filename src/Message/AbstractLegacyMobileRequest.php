@@ -1,10 +1,10 @@
 <?php
 
-namespace Omnipay\UnionPay\Message;
+namespace Omnipay\Wjminions\Message;
 
 /**
  * Class AbstractLegacyMobileRequest
- * @package Omnipay\UnionPay\Message
+ * @package Omnipay\Wjminions\Message
  */
 abstract class AbstractLegacyMobileRequest extends AbstractLegacyRequest
 {
@@ -15,8 +15,8 @@ abstract class AbstractLegacyMobileRequest extends AbstractLegacyRequest
             'query' => 'http://222.66.233.198:8080/gateway/merchant/query',
         ),
         'production' => array(
-            'trade' => 'https://mgate.unionpay.com/gateway/merchant/trade',
-            'query' => 'https://mgate.unionpay.com/gateway/merchant/query',
+            'trade' => 'https://mgate.Wjminions.com/gateway/merchant/trade',
+            'query' => 'https://mgate.Wjminions.com/gateway/merchant/query',
         ),
     );
 
