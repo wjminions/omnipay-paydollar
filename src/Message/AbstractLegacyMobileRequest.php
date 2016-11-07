@@ -1,10 +1,10 @@
 <?php
 
-namespace Omnipay\Wjminions\Message;
+namespace Omnipay\Paydollar\Message;
 
 /**
  * Class AbstractLegacyMobileRequest
- * @package Omnipay\Wjminions\Message
+ * @package Omnipay\Paydollar\Message
  */
 abstract class AbstractLegacyMobileRequest extends AbstractLegacyRequest
 {
@@ -15,8 +15,8 @@ abstract class AbstractLegacyMobileRequest extends AbstractLegacyRequest
             'query' => 'http://222.66.233.198:8080/gateway/merchant/query',
         ),
         'production' => array(
-            'trade' => 'https://mgate.Wjminions.com/gateway/merchant/trade',
-            'query' => 'https://mgate.Wjminions.com/gateway/merchant/query',
+            'trade' => 'https://mgate.Paydollar.com/gateway/merchant/trade',
+            'query' => 'https://mgate.Paydollar.com/gateway/merchant/query',
         ),
     );
 

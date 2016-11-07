@@ -1,13 +1,13 @@
 <?php
 
-namespace Omnipay\Wjminions\Message;
+namespace Omnipay\Paydollar\Message;
 
 use Omnipay\Common\Message\ResponseInterface;
-use Omnipay\Wjminions\Helper;
+use Omnipay\Paydollar\Helper;
 
 /**
  * Class ExpressCompletePurchaseRequest
- * @package Omnipay\Wjminions\Message
+ * @package Omnipay\Paydollar\Message
  */
 class ExpressCompletePurchaseRequest extends AbstractExpressRequest
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\Wjminions;
+namespace Omnipay\Paydollar;
 
 class Test
 {

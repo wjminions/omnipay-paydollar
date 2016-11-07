@@ -1,14 +1,14 @@
 <?php
 
-namespace Omnipay\Wjminions\Message;
+namespace Omnipay\Paydollar\Message;
 
 use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Common\Message\RedirectResponseInterface;
-use Omnipay\Wjminions\Helper;
+use Omnipay\Paydollar\Helper;
 
 /**
  * Class LegacyQuickPayPurchaseResponse
- * @package Omnipay\Wjminions\Message
+ * @package Omnipay\Paydollar\Message
  */
 class LegacyQuickPayPurchaseResponse extends AbstractResponse implements RedirectResponseInterface
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Omnipay\Wjminions;
+namespace Omnipay\Paydollar;
 
 use Omnipay\Common\AbstractGateway;
 
 /**
  * Class ExpressGateway
- * @package Omnipay\Wjminions
+ * @package Omnipay\Paydollar
  */
 class ExpressGateway extends AbstractGateway
 {
@@ -18,7 +18,7 @@ class ExpressGateway extends AbstractGateway
      */
     public function getName()
     {
-        return 'Wjminions_Express';
+        return 'Paydollar_Express';
     }
 
 
@@ -272,36 +272,36 @@ class ExpressGateway extends AbstractGateway
 
     public function purchase(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Wjminions\Message\ExpressPurchaseRequest', $parameters);
+        return $this->createRequest('\Omnipay\Paydollar\Message\ExpressPurchaseRequest', $parameters);
     }
 
 
     public function completePurchase(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Wjminions\Message\ExpressCompletePurchaseRequest', $parameters);
+        return $this->createRequest('\Omnipay\Paydollar\Message\ExpressCompletePurchaseRequest', $parameters);
     }
 
 
     public function query(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Wjminions\Message\ExpressQueryRequest', $parameters);
+        return $this->createRequest('\Omnipay\Paydollar\Message\ExpressQueryRequest', $parameters);
     }
 
 
     public function consumeUndo(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Wjminions\Message\ExpressConsumeUndoRequest', $parameters);
+        return $this->createRequest('\Omnipay\Paydollar\Message\ExpressConsumeUndoRequest', $parameters);
     }
 
 
     public function refund(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Wjminions\Message\ExpressRefundRequest', $parameters);
+        return $this->createRequest('\Omnipay\Paydollar\Message\ExpressRefundRequest', $parameters);
     }
 
 
     public function fileTransfer(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Wjminions\Message\ExpressFileTransferRequest', $parameters);
+        return $this->createRequest('\Omnipay\Paydollar\Message\ExpressFileTransferRequest', $parameters);
     }
 }

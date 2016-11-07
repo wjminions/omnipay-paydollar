@@ -1,10 +1,10 @@
 <?php
 
-namespace Omnipay\Wjminions;
+namespace Omnipay\Paydollar;
 
 /**
  * Class LegacyMobileGateway
- * @package Omnipay\Wjminions
+ * @package Omnipay\Paydollar
  */
 class LegacyMobileGateway extends AbstractLegacyGateway
 {
@@ -16,18 +16,18 @@ class LegacyMobileGateway extends AbstractLegacyGateway
      */
     public function getName()
     {
-        return 'Wjminions_LegacyMobile';
+        return 'Paydollar_LegacyMobile';
     }
 
 
     public function purchase(array $parameters = array ())
     {
-        return $this->createRequest('\Omnipay\Wjminions\Message\LegacyMobilePurchaseRequest', $parameters);
+        return $this->createRequest('\Omnipay\Paydollar\Message\LegacyMobilePurchaseRequest', $parameters);
     }
 
 
     public function completePurchase(array $parameters = array ())
     {
-        return $this->createRequest('\Omnipay\Wjminions\Message\LegacyCompletePurchaseRequest', $parameters);
+        return $this->createRequest('\Omnipay\Paydollar\Message\LegacyCompletePurchaseRequest', $parameters);
     }
 }
