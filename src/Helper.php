@@ -7,19 +7,6 @@ namespace Omnipay\Paydollar;
  */
 class Helper
 {
-
-    public static function getCertId($certPath, $password)
-    {
-        $data = file_get_contents($certPath);
-        openssl_pkcs12_read($data, $certs, $password);
-        $x509data = $certs ['cert'];
-        openssl_x509_read($x509data);
-        $certData = openssl_x509_parse($x509data);
-
-        return $certData['serialNumber'];
-    }
-
-
     public static function getParamsSignatureWithMD5($params, $secret)
     {
         $query = self::getStringToSign($params);

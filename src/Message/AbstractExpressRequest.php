@@ -169,7 +169,7 @@ abstract class AbstractExpressRequest extends AbstractRequest
 
     protected function httpRequest($method, $data)
     {
-        $result = Helper::sendHttpRequest($this->getEndpoint($method), $data);
+        $result = Helper::sendHttpRequest($this->getPayServerUrl(), $data);
 
         parse_str($result, $data);
 
@@ -178,11 +178,5 @@ abstract class AbstractExpressRequest extends AbstractRequest
         }
 
         return $data;
-    }
-
-
-    protected function getCertId()
-    {
-        return Helper::getCertId($this->getCertPath(), $this->getCertPassword());
     }
 }

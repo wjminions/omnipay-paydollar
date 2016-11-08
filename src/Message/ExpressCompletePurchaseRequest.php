@@ -36,18 +36,6 @@ class ExpressCompletePurchaseRequest extends AbstractExpressRequest
     }
 
 
-    public function setCertDir($value)
-    {
-        $this->setParameter('certDir', $value);
-    }
-
-
-    public function getCertDir()
-    {
-        return $this->getParameter('certDir');
-    }
-
-
     public function getRequestParam($key)
     {
         $params = $this->getRequestParams();
