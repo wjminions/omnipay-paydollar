@@ -20,18 +20,6 @@ class Helper
     }
 
 
-    public static function getParamsSignatureWithRSA($params, $certPath, $password)
-    {
-        $query = self::getStringToSign($params);
-
-        $params_sha1x16 = sha1($query, false);
-        $privateKey     = self::getPrivateKey($certPath, $password);
-        openssl_sign($params_sha1x16, $signature, $privateKey, OPENSSL_ALGO_SHA1);
-
-        return base64_encode($signature);
-    }
-
-
     public static function getParamsSignatureWithMD5($params, $secret)
     {
         $query = self::getStringToSign($params);

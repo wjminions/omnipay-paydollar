@@ -23,49 +23,21 @@ class ExpressPurchaseRequest extends AbstractExpressRequest
         $this->validateData();
 
         $data = array (
-            //版本号
-            'version'        => $this->getVersion(),
-            //编码方式
-            'encoding'       => $this->getEncoding(),
-            //证书ID
-            'certId'         => $this->getCertId(),
-            //交易类型
-            'txnType'        => $this->getTxnSubType() ?: '01',
-            //交易子类
-            'txnSubType'     => $this->getTxnSubType() ?: '01',
-            //业务类型
-            'bizType'        => $this->getBizType(),
-            //前台通知地址
-            'frontUrl'       => $this->getReturnUrl(),
-            //后台通知地址
-            'backUrl'        => $this->getNotifyUrl(),
-            //签名方法
-            'signMethod'     => $this->getSignMethod(),
-            //渠道类型，07-PC，08-手机
-            'channelType'    => $this->getChannelType(),
-            //接入类型
-            'accessType'     => $this->getAccessType(),
-            //商户代码，请改自己的测试商户号
-            'merId'          => $this->getMerId(),
-            //商户订单号
-            'orderId'        => $this->getOrderId(),
-            //订单发送时间
-            'txnTime'        => $this->getTxnTime(),
-            //交易金额，单位分
-            'txnAmt'         => $this->getTxnAmt(),
-            //交易币种
-            'currencyCode'   => $this->getCurrencyCode(),
-            //默认支付方式
-            'defaultPayType' => $this->getDefaultPayType(),
-            //订单描述，网关支付和wap支付暂时不起作用
-            'orderDesc'      => $this->getOrderDesc(),
-            //请求方保留域，透传字段，查询、通知、对账文件中均会原样出现
-            'reqReserved'    => $this->getReqReserved(),
+            'merchantId'     => $this->getMerId(),
+            'amount'         => $this->getAmount(),
+            'orderRef'       => $this->getOrderRef(),
+            'currCode'       => $this->getCurrCode(),
+            'mpsMode'        => $this->getMpsMode(),
+            'successUrl'     => $this->getSuccessUrl(),
+            'failUrl'        => $this->getFailUrl(),
+            'cancelUrl'      => $this->getCancelUrl(),
+            'payType'        => $this->getPayType(),
+            'lang'           => $this->getLanguage(),
+            'payMethod'      => $this->getPayMethod(),
+            'redirect'       => $this->getRedirect(),
         );
 
         $data = Helper::filterData($data);
-
-        $data['signature'] = Helper::getParamsSignatureWithRSA($data, $this->getCertPath(), $this->getCertPassword());
 
         return $data;
     }
@@ -74,15 +46,18 @@ class ExpressPurchaseRequest extends AbstractExpressRequest
     private function validateData()
     {
         $this->validate(
-            'certPath',
-            'certPassword',
-            'returnUrl',
-            'notifyUrl',
-            'merId',
-            'orderId',
-            'txnTime',
-            'orderDesc',
-            'txnAmt'
+            'merchantId',
+            'amount',
+            'orderRef',
+            'currCode',
+            'mpsMode',
+            'successUrl',
+            'failUrl',
+            'cancelUrl',
+            'payType',
+            'lang',
+            'payMethod',
+            'redirect'
         );
     }
 

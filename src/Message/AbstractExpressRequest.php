@@ -11,302 +11,159 @@ use Omnipay\Paydollar\Helper;
  */
 abstract class AbstractExpressRequest extends AbstractRequest
 {
-
-    protected $sandboxEndpoint = 'https://test.paydollar.com/b2cDemo/eng/payment/payForm.jsp';
-
-    protected $productionEndpoint = 'https://www.paydollar.com/b2cDemo/eng/payment/payForm.jsp';
-
-    protected $methods = array (
-        'front' => 'frontTransReq.do',
-        'back'  => 'backTransReq.do',
-        'app'   => 'appTransReq.do',
-        'query' => 'queryTrans.do',
-    );
-
-
-    public function getEndpoint($type)
+    public function setPayServerUrl($value)
     {
-        if ($this->getEnvironment() == 'production') {
-            return $this->productionEndpoint . $this->methods[$type];
-        } else {
-            return $this->sandboxEndpoint . $this->methods[$type];
-        }
+        return $this->setParameter('pay_server_url', $value);
     }
 
 
-    public function getEnvironment()
+    public function getPayServerUrl()
     {
-        return $this->getParameter('environment');
+        return $this->getParameter('pay_server_url');
     }
 
 
-    public function setVersion($value)
+    public function setAmount($value)
     {
-        return $this->setParameter('version', $value);
+        return $this->setParameter('amount', $value);
     }
 
 
-    public function getVersion()
+    public function getAmount()
     {
-        return $this->getParameter('version');
+        return $this->getParameter('amount');
     }
 
 
-    public function setEncoding($value)
+    public function setOrderRef($value)
     {
-        return $this->setParameter('encoding', $value);
+        return $this->setParameter('orderRef', $value);
     }
 
 
-    public function getEncoding()
+    public function getOrderRef()
     {
-        return $this->getParameter('encoding');
+        return $this->getParameter('orderRef');
     }
 
 
-    public function setTxnType($value)
+    public function setRedirect($value)
     {
-        return $this->setParameter('txnType', $value);
+        return $this->setParameter('redirect', $value);
     }
 
 
-    public function getTxnType()
+    public function getRedirect()
     {
-        return $this->getParameter('txnType');
+        return $this->getParameter('redirect');
     }
 
 
-    public function getTxnSubType()
+    public function setSuccessUrl($value)
     {
-        return $this->getParameter('txnSubType');
+        return $this->setParameter('successUrl', $value);
     }
 
 
-    public function setTxnSubType($value)
+    public function getSuccessUrl()
     {
-        return $this->setParameter('txnSubType', $value);
+        return $this->getParameter('successUrl');
     }
 
 
-    public function setBizType($value)
+    public function setFailUrl($value)
     {
-        return $this->setParameter('bizType', $value);
+        return $this->setParameter('failUrl', $value);
     }
 
 
-    public function getBizType()
+    public function getFailUrl()
     {
-        return $this->getParameter('bizType');
+        return $this->getParameter('failUrl');
     }
 
 
-    public function setReturnUrl($value)
+    public function setCancelUrl($value)
     {
-        return $this->setParameter('returnUrl', $value);
+        return $this->setParameter('cancelUrl', $value);
     }
 
 
-    public function getReturnUrl()
+    public function getCancelUrl()
     {
-        return $this->getParameter('returnUrl');
-    }
-
-
-    public function setNotifyUrl($value)
-    {
-        return $this->setParameter('notifyUrl', $value);
-    }
-
-
-    public function getNotifyUrl()
-    {
-        return $this->getParameter('notifyUrl');
-    }
-
-
-    public function setSignMethod($value)
-    {
-        return $this->setParameter('signMethod', $value);
-    }
-
-
-    public function getSignMethod()
-    {
-        return $this->getParameter('signMethod');
-    }
-
-
-    public function setChannelType($value)
-    {
-        return $this->setParameter('channelType', $value);
-    }
-
-
-    public function getChannelType()
-    {
-        return $this->getParameter('channelType');
-    }
-
-
-    public function setAccessType($value)
-    {
-        return $this->setParameter('accessType', $value);
-    }
-
-
-    public function getAccessType()
-    {
-        return $this->getParameter('accessType');
+        return $this->getParameter('cancelUrl');
     }
 
 
     public function setMerId($value)
     {
-        return $this->setParameter('merId', $value);
+        return $this->setParameter('merchantId', $value);
     }
 
 
     public function getMerId()
     {
-        return $this->getParameter('merId');
+        return $this->getParameter('merchantId');
     }
 
 
-    public function setCurrencyCode($value)
+    public function setMpsMode($value)
     {
-        return $this->setParameter('currencyCode', $value);
+        return $this->setParameter('mpsMode', $value);
     }
 
 
-    public function getCurrencyCode()
+    public function getMpsMode()
     {
-        return $this->getParameter('currencyCode');
+        return $this->getParameter('mpsMode');
     }
 
 
-    public function setEnvironment($value)
+    public function setCurrCode($value)
     {
-        return $this->setParameter('environment', $value);
+        return $this->setParameter('currCode', $value);
     }
 
 
-    public function setCertPath($value)
+    public function getCurrCode()
     {
-        return $this->setParameter('certPath', $value);
+        return $this->getParameter('currCode');
     }
 
 
-    public function getCertPath()
+    public function setPayType($value)
     {
-        return $this->getParameter('certPath');
+        return $this->setParameter('payType', $value);
     }
 
 
-    public function setCertPassword($value)
+    public function getPayType()
     {
-        return $this->setParameter('certPassword', $value);
+        return $this->getParameter('payType');
     }
 
 
-    public function getCertPassword()
+    public function setLanguage($value)
     {
-        return $this->getParameter('certPassword');
+        return $this->setParameter('lang', $value);
     }
 
 
-    public function setOrderDesc($value)
+    public function getLanguage()
     {
-        return $this->setParameter('orderDesc', $value);
+        return $this->getParameter('lang');
     }
 
 
-    public function getOrderDesc()
+    public function setPayMethod($value)
     {
-        return $this->getParameter('orderDesc');
+        return $this->setParameter('payMethod', $value);
     }
 
 
-    public function setReqReserved($value)
+    public function getPayMethod()
     {
-        return $this->setParameter('reqReserved', $value);
-    }
-
-
-    public function getReqReserved()
-    {
-        return $this->getParameter('reqReserved');
-    }
-
-
-    public function setOrderId($value)
-    {
-        return $this->setParameter('orderId', $value);
-    }
-
-
-    public function getOrderId()
-    {
-        return $this->getParameter('orderId');
-    }
-
-
-    public function setTxnTime($value)
-    {
-        return $this->setParameter('txnTime', $value);
-    }
-
-
-    public function getTxnTime()
-    {
-        return $this->getParameter('txnTime');
-    }
-
-
-    public function setTxnAmt($value)
-    {
-        return $this->setParameter('txnAmt', $value);
-    }
-
-
-    public function getTxnAmt()
-    {
-        return $this->getParameter('txnAmt');
-    }
-
-
-    public function setRequestType($value)
-    {
-        return $this->setParameter('requestType', $value);
-    }
-
-
-    public function getRequestType()
-    {
-        return $this->getParameter('requestType');
-    }
-
-
-    public function setDefaultPayType($value)
-    {
-        return $this->setParameter('defaultPayType', $value);
-    }
-
-
-    public function getDefaultPayType()
-    {
-        return $this->getParameter('defaultPayType');
-    }
-
-
-    public function setCertDir($value)
-    {
-        return $this->setParameter('certDir', $value);
-    }
-
-
-    public function getCertDir()
-    {
-        return $this->getParameter('certDir');
+        return $this->getParameter('payMethod');
     }
 
 

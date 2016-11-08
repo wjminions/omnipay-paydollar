@@ -27,7 +27,7 @@ class ExpressPurchaseResponse extends AbstractResponse implements RedirectRespon
 
     public function getRedirectUrl()
     {
-        return $this->getRequest()->getEndpoint('front');
+        return $this->getRequest()->getPayServerUrl();
     }
 
 
@@ -45,7 +45,7 @@ class ExpressPurchaseResponse extends AbstractResponse implements RedirectRespon
 
     public function getRedirectHtml()
     {
-        $action = $this->getRequest()->getEndpoint('front');
+        $action = $this->getRequest()->getPayServerUrl();
         $fields = $this->getFormFields();
         $method = $this->getRedirectMethod();
 
@@ -80,7 +80,7 @@ eot;
 
     public function getTradeNo()
     {
-        $endpoint = $this->getRequest()->getEndpoint('app');
+        $endpoint = $this->getRequest()->getPayServerUrl();
 
         $result = Helper::sendHttpRequest($endpoint, $this->data);
 

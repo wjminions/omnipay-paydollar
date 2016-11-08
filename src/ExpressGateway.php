@@ -35,6 +35,18 @@ class ExpressGateway extends AbstractGateway
     }
 
 
+    public function setPayServerUrl($value)
+    {
+        return $this->setParameter('pay_server_url', $value);
+    }
+
+
+    public function getPayServerUrl()
+    {
+        return $this->getParameter('pay_server_url');
+    }
+
+
     public function setAmount($value)
     {
         return $this->setParameter('amount', $value);
@@ -194,23 +206,5 @@ class ExpressGateway extends AbstractGateway
     public function query(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\Paydollar\Message\ExpressQueryRequest', $parameters);
-    }
-
-
-    public function consumeUndo(array $parameters = array())
-    {
-        return $this->createRequest('\Omnipay\Paydollar\Message\ExpressConsumeUndoRequest', $parameters);
-    }
-
-
-    public function refund(array $parameters = array())
-    {
-        return $this->createRequest('\Omnipay\Paydollar\Message\ExpressRefundRequest', $parameters);
-    }
-
-
-    public function fileTransfer(array $parameters = array())
-    {
-        return $this->createRequest('\Omnipay\Paydollar\Message\ExpressFileTransferRequest', $parameters);
     }
 }

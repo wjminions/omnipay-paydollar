@@ -23,23 +23,21 @@ class ExpressQueryRequest extends AbstractExpressRequest
         $this->validate('certPath', 'certPassword', 'orderId', 'txnTime', 'txnAmt');
 
         $data = array(
-            'version'     => $this->getVersion(),
-            'encoding'    => $this->getEncoding(),
-            'certId'      => $this->getCertId(),
-            'signMethod'  => $this->getSignMethod(),
-            'txnType'     => '00',
-            'txnSubType'  => '00',
-            'bizType'     => $this->getBizType(),
-            'accessType'  => $this->getAccessType(),
-            'channelType' => $this->getChannelType(),
-            'orderId'     => $this->getOrderId(),
-            'merId'       => $this->getMerId(),
-            'txnTime'     => $this->getTxnTime(),
+            'merchantId'     => $this->getMerId(),
+            'amount'         => $this->getAmount(),
+            'orderRef'       => $this->getOrderRef(),
+            'currCode'       => $this->getCurrCode(),
+            'mpsMode'        => $this->getMpsMode(),
+            'successUrl'     => $this->getSuccessUrl(),
+            'failUrl'        => $this->getFailUrl(),
+            'cancelUrl'      => $this->getCancelUrl(),
+            'payType'        => $this->getPayType(),
+            'lang'           => $this->getLanguage(),
+            'payMethod'      => $this->getPayMethod(),
+            'redirect'       => $this->getRedirect(),
         );
 
         $data = Helper::filterData($data);
-
-        $data['signature'] = Helper::getParamsSignatureWithRSA($data, $this->getCertPath(), $this->getCertPassword());
 
         return $data;
     }
