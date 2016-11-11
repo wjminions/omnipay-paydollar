@@ -11,6 +11,10 @@ use Omnipay\Paydollar\Helper;
  */
 abstract class AbstractExpressRequest extends AbstractRequest
 {
+    const QUERY_URL = 'https://test.paydollar.com/b2cDemo/eng/merchant/api/orderApi.jsp';
+    //const QUERY_URL = 'https://www.paydollar.com/b2c2/eng/merchant/api/orderApi.jsp';
+
+
     public function setPayServerUrl($value)
     {
         return $this->setParameter('pay_server_url', $value);
@@ -95,13 +99,13 @@ abstract class AbstractExpressRequest extends AbstractRequest
     }
 
 
-    public function setMerId($value)
+    public function setMerchantId($value)
     {
         return $this->setParameter('merchantId', $value);
     }
 
 
-    public function getMerId()
+    public function getMerchantId()
     {
         return $this->getParameter('merchantId');
     }
@@ -143,13 +147,13 @@ abstract class AbstractExpressRequest extends AbstractRequest
     }
 
 
-    public function setLanguage($value)
+    public function setLang($value)
     {
         return $this->setParameter('lang', $value);
     }
 
 
-    public function getLanguage()
+    public function getLang()
     {
         return $this->getParameter('lang');
     }
@@ -167,16 +171,14 @@ abstract class AbstractExpressRequest extends AbstractRequest
     }
 
 
-    protected function httpRequest($method, $data)
+    public function setSecurity($value)
     {
-        $result = Helper::sendHttpRequest($this->getPayServerUrl(), $data);
+        return $this->setParameter('security', $value);
+    }
 
-        parse_str($result, $data);
 
-        if (! is_array($data)) {
-            $data = array ();
-        }
-
-        return $data;
+    public function getSecurity()
+    {
+        return $this->getParameter('security');
     }
 }

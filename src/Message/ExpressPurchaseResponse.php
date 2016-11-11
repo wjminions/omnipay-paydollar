@@ -76,20 +76,4 @@ eot;
 
         return $html;
     }
-
-
-    public function getTradeNo()
-    {
-        $endpoint = $this->getRequest()->getPayServerUrl();
-
-        $result = Helper::sendHttpRequest($endpoint, $this->data);
-
-        parse_str($result, $data);
-
-        if (is_array($data) && isset($data['tn'])) {
-            return $data['tn'];
-        } else {
-            return null;
-        }
-    }
 }

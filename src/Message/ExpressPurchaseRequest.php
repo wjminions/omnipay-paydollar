@@ -23,7 +23,7 @@ class ExpressPurchaseRequest extends AbstractExpressRequest
         $this->validateData();
 
         $data = array (
-            'merchantId'     => $this->getMerId(),
+            'merchantId'     => $this->getMerchantId(),
             'amount'         => $this->getAmount(),
             'orderRef'       => $this->getOrderRef(),
             'currCode'       => $this->getCurrCode(),
@@ -32,12 +32,14 @@ class ExpressPurchaseRequest extends AbstractExpressRequest
             'failUrl'        => $this->getFailUrl(),
             'cancelUrl'      => $this->getCancelUrl(),
             'payType'        => $this->getPayType(),
-            'lang'           => $this->getLanguage(),
+            'lang'           => $this->getLang(),
             'payMethod'      => $this->getPayMethod(),
             'redirect'       => $this->getRedirect(),
         );
 
         $data = Helper::filterData($data);
+
+        $data['secureHash'] = Helper::getParamsSignatureWithSecurity($data, $this->getSecurity());
 
         return $data;
     }

@@ -119,13 +119,13 @@ class ExpressGateway extends AbstractGateway
     }
 
 
-    public function setMerId($value)
+    public function setMerchantId($value)
     {
         return $this->setParameter('merchantId', $value);
     }
 
 
-    public function getMerId()
+    public function getMerchantId()
     {
         return $this->getParameter('merchantId');
     }
@@ -167,13 +167,13 @@ class ExpressGateway extends AbstractGateway
     }
 
 
-    public function setLanguage($value)
+    public function setLang($value)
     {
         return $this->setParameter('lang', $value);
     }
 
 
-    public function getLanguage()
+    public function getLang()
     {
         return $this->getParameter('lang');
     }
@@ -191,6 +191,18 @@ class ExpressGateway extends AbstractGateway
     }
 
 
+    public function setSecurity($value)
+    {
+        return $this->setParameter('security', $value);
+    }
+
+
+    public function getSecurity()
+    {
+        return $this->getParameter('security');
+    }
+
+
     public function purchase(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\Paydollar\Message\ExpressPurchaseRequest', $parameters);
@@ -200,11 +212,5 @@ class ExpressGateway extends AbstractGateway
     public function completePurchase(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\Paydollar\Message\ExpressCompletePurchaseRequest', $parameters);
-    }
-
-
-    public function query(array $parameters = array())
-    {
-        return $this->createRequest('\Omnipay\Paydollar\Message\ExpressQueryRequest', $parameters);
     }
 }

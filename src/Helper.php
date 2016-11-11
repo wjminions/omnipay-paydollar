@@ -7,85 +7,72 @@ namespace Omnipay\Paydollar;
  */
 class Helper
 {
-    public static function getParamsSignatureWithMD5($params, $secret)
+    public static function verify($data, $security)
     {
-        $query = self::getStringToSign($params);
-
-        $signature = md5($query . '&' . md5($secret));
-
-        return $signature;
-    }
-
-
-    protected static function getPrivateKey($certPath, $password)
-    {
-        $data = file_get_contents($certPath);
-        openssl_pkcs12_read($data, $certs, $password);
-
-        return $certs['pkey'];
-    }
-
-
-    public static function verify($params, $certDir)
-    {
-        $publicKey        = self::getPublicKeyByCertId($params['certId'], $certDir);
-        $requestSignature = $params ['signature'];
-        unset($params['signature']);
-
-        ksort($params);
-        $query = http_build_query($params);
-        $query = urldecode($query);
-
-        $signature     = base64_decode($requestSignature);
-        $paramsSha1x16 = sha1($query, false);
-        $isSuccess     = openssl_verify($paramsSha1x16, $signature, $publicKey, OPENSSL_ALGO_SHA1);
-
-        return (bool)$isSuccess;
-    }
-
-
-    public static function getPublicKeyByCertId($certId, $certDir)
-    {
-        $handle = opendir($certDir);
-        if ($handle) {
-            while ($file = readdir($handle)) {
-                //clearstatcache();
-                $filePath = rtrim($certDir, '/\\') . '/' . $file;
-                if (is_file($filePath) && self::endsWith($filePath, '.cer')) {
-                    if (self::getCertIdByCerPath($filePath) == $certId) {
-                        closedir($handle);
-
-                        return file_get_contents($filePath);
-                    }
-                }
-            }
-            throw new \Exception(sprintf('Can not find certId in certDir %s', $certDir));
-        } else {
-            throw new \Exception('certDir is not exists');
+        if(isset( $data ['secureHash'] )){
+            $secureHash = $data ['secureHash'];
         }
-
+        $secureHashSecret = trim ( $security );
+        if (isset ( $secureHash ) && $secureHash && $secureHashSecret) {
+            $secureHashs = explode ( ',', $secureHash );
+            while ( list ( $key, $value ) = each ( $secureHashs ) ) {
+                $verifyResult = self::verifyPaymentDatafeed (
+                    $data['src'],
+                    $data['prc'],
+                    $data['successcode'],
+                    $data['ref'],
+                    $data['payRef'],
+                    $data['cur'],
+                    $data['amt'],
+                    $data['payerAuth'],
+                    $secureHashSecret,
+                    $data['value']
+                );
+            }
+            return $verifyResult;
+        }
     }
 
+    protected static function verifyPaymentDatafeed($src, $prc, $successCode, $merchantReferenceNumber, $paydollarReferenceNumber, $currencyCode, $amount, $payerAuthenticationStatus, $secureHashSecret, $secureHash) {
 
-    public static function endsWith($haystack, $needles)
-    {
-        foreach ((array) $needles as $needle) {
-            if ((string) $needle === substr($haystack, -strlen($needle))) {
-                return true;
-            }
+        $buffer = $src . '|' . $prc . '|' . $successCode . '|' . $merchantReferenceNumber . '|' . $paydollarReferenceNumber . '|' . $currencyCode . '|' . $amount . '|' . $payerAuthenticationStatus . '|' . $secureHashSecret;
+
+        $verifyData = sha1($buffer);
+
+        if ($secureHash == $verifyData) {
+            return true;
         }
 
         return false;
+
     }
 
 
-    protected static function getCertIdByCerPath($certPath)
+    public static function getParamsSignatureWithSecurity($data, $security)
     {
-        $x509data = file_get_contents($certPath);
-        openssl_x509_read($x509data);
-        $certData = openssl_x509_parse($x509data);
+        $secureHashSecret = trim ( $security );
+        if ($secureHashSecret) {
+            $secureHash = self::generatePaymentSecureHash (
+                $data['merchantId'],
+                $data['orderRef'],
+                $data['currCode'],
+                $data['amount'],
+                $data['payType'],
+                $secureHashSecret
+            );
 
-        return $certData ['serialNumber'];
+            return $secureHash;
+        } else {
+            return '';
+        }
+    }
+
+    protected static function generatePaymentSecureHash($merchantId, $merchantReferenceNumber, $currencyCode, $amount, $paymentType, $secureHashSecret) {
+
+        $buffer = $merchantId . '|' . $merchantReferenceNumber . '|' . $currencyCode . '|' . $amount . '|' . $paymentType . '|' . $secureHashSecret;
+        //echo $buffer;
+        return sha1($buffer);
+
     }
 
 
@@ -118,20 +105,5 @@ class Helper
         );
 
         return $data;
-    }
-
-
-    /**
-     * @param $params
-     *
-     * @return string
-     */
-    public static function getStringToSign($params)
-    {
-        ksort($params);
-        $query = http_build_query($params);
-        $query = urldecode($query);
-
-        return $query;
     }
 }
