@@ -39,7 +39,9 @@ class ExpressPurchaseRequest extends AbstractExpressRequest
 
         $data = Helper::filterData($data);
 
-        $data['secureHash'] = Helper::getParamsSignatureWithSecurity($data, $this->getSecurity());
+        if ($this->getSecurity()) {
+            $data['secureHash'] = Helper::getParamsSignatureWithSecurity($data, $this->getSecurity());
+        }
 
         return $data;
     }

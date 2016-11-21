@@ -56,8 +56,14 @@ class ExpressCompletePurchaseRequest extends AbstractExpressRequest
      */
     public function sendData($data)
     {
-        $data['verify_success'] = Helper::verify($this->getRequestParams(), $this->getSecurity());
-        $data['is_paid']        = $data['verify_success'] && ($this->getRequestParam('successcode') == '0');
+        if (isset($data['secureHash']) && $this->getSecurity()) {
+            $data['verify_success'] = Helper::verify($this->getRequestParams(), $this->getSecurity());
+            $data['is_paid']        = $data['verify_success'] && ($this->getRequestParam('successcode') == '0');
+        } else if (! isset($data['secureHash']) && ! $this->getSecurity() && $this->getRequestParam('successcode') == '0') {
+            $data['is_paid']        = true;
+        } else {
+            $data['is_paid']        = false;
+        }
 
         return $this->response = new ExpressCompletePurchaseResponse($this, $data);
     }

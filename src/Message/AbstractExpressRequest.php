@@ -11,10 +11,6 @@ use Omnipay\Paydollar\Helper;
  */
 abstract class AbstractExpressRequest extends AbstractRequest
 {
-    const QUERY_URL = 'https://test.paydollar.com/b2cDemo/eng/merchant/api/orderApi.jsp';
-    //const QUERY_URL = 'https://www.paydollar.com/b2c2/eng/merchant/api/orderApi.jsp';
-
-
     public function setPayServerUrl($value)
     {
         return $this->setParameter('pay_server_url', $value);

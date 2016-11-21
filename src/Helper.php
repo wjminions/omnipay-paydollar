@@ -26,7 +26,7 @@ class Helper
                     $data['amt'],
                     $data['payerAuth'],
                     $secureHashSecret,
-                    $data['value']
+                    $value
                 );
             }
             return $verifyResult;
