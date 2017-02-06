@@ -1,0 +1,28 @@
+{
+    "name": "wjminions/omnipay-paydollar",
+    "type": "library",
+    "description": "Paydollar driver for the Omnipay payment processing library",
+    "keywords": [
+        "gateway",
+        "paydollar gateway service",
+        "merchant",
+        "paydollar",
+        "omnipay",
+        "pay",
+        "payment"
+    ],
+    "homepage": "https://github.com/wjminions/omnipay-paydollar",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "wjminions",
+            "homepage": "https://github.com/wjminions/omnipay-paydollar"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Omnipay\\Paydollar\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "~2.0"
+    }
+}
