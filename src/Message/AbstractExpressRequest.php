@@ -11,6 +11,61 @@ use Omnipay\Paydollar\Helper;
  */
 abstract class AbstractExpressRequest extends AbstractRequest
 {
+    public function setLoginId($value)
+    {
+        return $this->setParameter('loginId', $value);
+    }
+
+
+    public function getLoginId()
+    {
+        return $this->getParameter('loginId');
+    }
+
+    public function setPassword($value)
+    {
+        return $this->setParameter('password', $value);
+    }
+
+
+    public function getPassword()
+    {
+        return $this->getParameter('password');
+    }
+
+    public function setActionType($value)
+    {
+        return $this->setParameter('actionType', $value);
+    }
+
+
+    public function getActionType()
+    {
+        return $this->getParameter('actionType');
+    }
+
+    public function setPayRef($value)
+    {
+        return $this->setParameter('payRef', $value);
+    }
+
+
+    public function getPayRef()
+    {
+        return $this->getParameter('payRef');
+    }
+
+    public function setMerchantUrl($value)
+    {
+        return $this->setParameter('merchant_url', $value);
+    }
+
+
+    public function getMerchantUrl()
+    {
+        return $this->getParameter('merchant_url');
+    }
+
     public function setPayServerUrl($value)
     {
         return $this->setParameter('pay_server_url', $value);

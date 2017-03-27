@@ -34,6 +34,60 @@ class ExpressGateway extends AbstractGateway
         );
     }
 
+    public function setLoginId($value)
+    {
+        return $this->setParameter('loginId', $value);
+    }
+
+
+    public function getLoginId()
+    {
+        return $this->getParameter('loginId');
+    }
+
+    public function setPassword($value)
+    {
+        return $this->setParameter('password', $value);
+    }
+
+
+    public function getPassword()
+    {
+        return $this->getParameter('password');
+    }
+
+    public function setActionType($value)
+    {
+        return $this->setParameter('actionType', $value);
+    }
+
+
+    public function getActionType()
+    {
+        return $this->getParameter('actionType');
+    }
+
+    public function setPayRef($value)
+    {
+        return $this->setParameter('payRef', $value);
+    }
+
+
+    public function getPayRef()
+    {
+        return $this->getParameter('payRef');
+    }
+
+    public function setMerchantUrl($value)
+    {
+        return $this->setParameter('merchant_url', $value);
+    }
+
+
+    public function getMerchantUrl()
+    {
+        return $this->getParameter('merchant_url');
+    }
 
     public function setPayServerUrl($value)
     {
@@ -212,5 +266,10 @@ class ExpressGateway extends AbstractGateway
     public function completePurchase(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\Paydollar\Message\ExpressCompletePurchaseRequest', $parameters);
+    }
+
+    public function refund(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Paydollar\Message\ExpressRefundRequest', $parameters);
     }
 }
