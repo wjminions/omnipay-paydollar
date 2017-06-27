@@ -13,6 +13,35 @@ use Omnipay\Paydollar\Helper;
  */
 class ClientRefundResponse extends AbstractResponse
 {
+    public function isRedirect()
+    {
+        return false;
+    }
+
+
+    public function getRedirectMethod()
+    {
+        return 'POST';
+    }
+
+
+    public function getRedirectUrl()
+    {
+        return false;
+    }
+
+
+    public function getRedirectHtml()
+    {
+        return false;
+    }
+
+
+    public function getTransactionNo()
+    {
+        return isset($this->data['ref']) && $this->data['ref'] == '0';
+    }
+
 
     public function isSuccessful()
     {
